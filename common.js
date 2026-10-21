@@ -50,25 +50,33 @@ function getCurrentPage() {
   return page === "" ? "index.html" : page;
 }
 
-// 1. 共通ヘッダーの描画（「当院について」を削除し4つに絞ったクイックナビ）
+// 1. 共通ヘッダーの描画（logo.png画像とテキストを同じ行の左側に配置）
 function renderHeader() {
   const headerPlaceholder = document.getElementById("common-header");
   if (!headerPlaceholder) return;
 
   headerPlaceholder.innerHTML = `
     <header class="site-header">
-      <div class="header-inner" style="flex-direction: column; align-items: stretch; padding: 8px 16px;">
-        <!-- 上段：ロゴとWEB予約ボタン -->
+      <div class="header-inner" style="display: flex; flex-direction: column; align-items: stretch; padding: 8px 16px;">
+        <!-- 上段：ロゴとWEB予約ボタンを同じ行に配置 -->
         <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+          
+          <!-- 左側：logo.png画像 ＋ クリニック名（横並び） -->
           <div class="site-logo">
-            <a href="index.html">
-              <span class="logo-sub">${CLINIC_CONFIG.corpName}｜南海・天下茶屋駅すぐ</span>
-              <span class="logo-main">${CLINIC_CONFIG.clinicName}</span>
+            <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+              <img src="images/logo.png" alt="天下茶屋駅前クリニック ロゴ" style="height: 40px; width: auto; object-fit: contain; flex-shrink: 0; border-radius: 4px;">
+              <div style="display: flex; flex-direction: column; justify-content: center;">
+                <span class="logo-sub" style="font-size: 0.7rem; color: var(--text-muted); font-weight: 600; line-height: 1.1; white-space: nowrap;">${CLINIC_CONFIG.corpName}｜南海・天下茶屋駅すぐ</span>
+                <span class="logo-main" style="font-size: 1.3rem; font-weight: 800; color: var(--primary-dark); line-height: 1.2; white-space: nowrap;">${CLINIC_CONFIG.clinicName}</span>
+              </div>
             </a>
           </div>
-          <div class="header-cta">
+
+          <!-- 右側：WEB予約ボタン -->
+          <div class="header-cta" style="flex-shrink: 0;">
             <a href="#" class="btn btn-reserve js-open-reserve-navi" style="padding: 8px 14px; font-size: 0.8rem;">📅 WEB予約</a>
           </div>
+
         </div>
 
         <!-- 下段：スマホ用クイックアイコンナビ -->

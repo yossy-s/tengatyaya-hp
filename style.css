@@ -118,25 +118,35 @@ img {
   text-transform: uppercase;
 }
 
-/* 下層ページ用 ページヒーロー */
+/* ===================================================
+   各ページ上部（ページヒーロー）の背景画像（moyou.jpg）設定
+   ※画像そのものをしっかり表示させます
+=================================================== */
 .page-hero {
-  background: linear-gradient(135deg, #127a62 0%, #0c5241 100%);
+  position: relative;
+  background-image: url('images/moyou.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
   color: #fff;
-  padding: 56px 0;
+  padding: 60px 0;
   text-align: center;
-  box-shadow: inset 0 -10px 20px rgba(0,0,0,0.05);
+  box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
 }
 
+/* 文字をくっきり見せるためのごく軽いテキストシャドウ */
 .page-hero-title {
   font-size: 2.25rem;
   font-weight: 800;
   margin-bottom: 10px;
   letter-spacing: 0.02em;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .page-hero-lead {
-  color: #e6f4f1;
+  color: #ffffff;
   font-size: 1rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
 /* パンくずリスト */
@@ -525,9 +535,8 @@ img {
   }
 }
 
-
 /* ===================================================
-   お知らせボックスの装飾（リッチな見た目に復元）
+   お知らせボックスの装飾
 =================================================== */
 .news-box {
   background: #fff;
@@ -630,4 +639,31 @@ img {
 .navi-option-btn.primary:hover {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
   color: #ffffff !important;
+}
+
+/* ===================================================
+   ヘッダーロゴの完全横並び強制修正
+=================================================== */
+.site-logo a {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+  text-decoration: none !important;
+}
+
+.site-logo img {
+  height: 40px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+  border-radius: 4px !important;
+  display: block !important;
+}
+
+.site-logo .logo-text-wrap,
+.site-logo div:not([class]) {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
 }
