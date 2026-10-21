@@ -39,26 +39,24 @@
         <div class="content-block" style="margin-bottom: 48px;">
           <div style="display: grid; grid-template-columns: 280px 1fr; gap: 36px; align-items: center;" class="staff-grid">
             <div>
-              <!-- 院長写真プレースホルダー -->
-              <div class="img-placeholder" style="min-height: 320px;">
-                <span style="font-size: 3rem; margin-bottom: 8px;">👨‍⚕️</span>
-                <span style="font-size: 0.88rem; font-weight: bold;">院長 吉田 真也 の写真</span>
-                <span style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">（images/director.jpg 等に差し替え可能）</span>
+              <!-- 院長写真（images/doctor-photo.jpg を読み込む設定） -->
+              <div class="director-photo-wrap">
+                <img src="images/doctor-photo.jpg" alt="院長 伊東 友好" style="width: 100%; height: auto; border-radius: 8px; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
               </div>
             </div>
             <div>
               <span class="section-subtitle" style="margin-bottom: 2px;">DIRECTOR MESSAGE</span>
               <h2 style="font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 16px;">
-                地域の皆さまの健やかな毎日を、<br>身近で支えるパートナーでありたい
+                呼吸器専門医として、地域の皆さまの<br>健やかな呼吸と毎日を温かく支えます
               </h2>
               <p style="margin-bottom: 16px; line-height: 1.8;">
-                この度、南海・大阪メトロ「天下茶屋駅」前に「天下茶屋駅前クリニック」を開院いたしました。本院である「よどがわ内科クリニック」での診療経験を活かし、西成区および近隣の皆さまがいつでも気軽に相談できる、温かく質の高い医療を提供してまいります。
+                この度、南海・大阪メトロ「天下茶屋駅」前に「天下茶屋駅前クリニック」を開院いたしました。これまで培ってきた呼吸器内科専門医・指導医としての経験を活かし、咳や息切れなどの呼吸器症状から、高血圧や糖尿病などの生活習慣病、日常的な体調不良まで、地域の皆さまがいつでも気軽に相談できる温かい医療を提供してまいります。
               </p>
               <p style="margin-bottom: 16px; line-height: 1.8;">
-                発熱や咳などの急な症状から、高血圧や糖尿病などの生活習慣病、呼吸器疾患、健康診断まで幅広く対応いたします。「なんとなく体調がすぐれない」という段階でも、どうぞ遠慮なくご相談ください。
+                「なんとなく咳が長引く」「階段で息が切れやすい」など、少しでも気になることがございましたら、どうぞ遠慮なくご相談ください。皆さまの健康な日常を身近でサポートいたします。
               </p>
               <div style="font-weight: 700; color: var(--primary-dark); text-align: right; font-size: 1.1rem;">
-                院長 吉田 真也
+                院長 伊東 友好
               </div>
             </div>
           </div>
@@ -69,22 +67,33 @@
           <div class="content-block" style="margin-bottom: 0;">
             <h3>院長経歴</h3>
             <ul style="padding-left: 0; line-height: 2;">
-              <li><strong>大阪公立大学医学部医学科</strong> 卒業</li>
-              <li>臨床研修修了後、内科・呼吸器内科等の医療機関にて勤務</li>
-              <li>医療法人社団適塾会 よどがわ内科クリニック（本院） 勤務 / 院長</li>
+              <li><strong>〇〇大学医学部医学科</strong> 卒業</li>
+              <li>臨床研修修了後、呼吸器内科等の医療機関にて勤務</li>
               <li>天下茶屋駅前クリニック 院長就任</li>
             </ul>
           </div>
 
           <div class="content-block" style="margin-bottom: 0;">
             <h3>資格・所属学会</h3>
-            <ul class="check-list" style="margin-top: 10px;">
-              <li>医師免許</li>
-              <li>日本内科学会 所属</li>
-              <li>日本呼吸器学会 所属</li>
-              <li>難病指定医</li>
-              <li>その他各種医療専門医・認定医</li>
-            </ul>
+            <div style="margin-bottom: 16px;">
+              <h4 style="font-size: 0.95rem; color: var(--primary-dark); margin-bottom: 8px;">【資格・免許】</h4>
+              <ul class="check-list" style="margin-top: 4px;">
+                <li>医師免許</li>
+                <li>呼吸器内科専門医・指導医</li>
+                <li>認定内科専門医・指導医</li>
+                <li>日本結核非結核性抗酸菌学会専門医・指導医</li>
+                <li>緩和ケア研修会修了</li>
+                <li>医師臨床研修修了</li>
+              </ul>
+            </div>
+            <div>
+              <h4 style="font-size: 0.95rem; color: var(--primary-dark); margin-bottom: 8px;">【所属学会】</h4>
+              <ul class="check-list" style="margin-top: 4px;">
+                <li>日本内科学会</li>
+                <li>日本呼吸器学会</li>
+                <li>日本結核非結核性抗酸菌学会</li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -108,9 +117,9 @@
               </p>
             </div>
             <div style="background: var(--primary-light); padding: 20px; border-radius: 8px;">
-              <h4 style="color: var(--primary-dark); margin-bottom: 8px; font-size: 1rem;">🤝 本院との連携</h4>
+              <h4 style="color: var(--primary-dark); margin-bottom: 8px; font-size: 1rem;">🤝 連携体制</h4>
               <p style="font-size: 0.9rem; color: var(--text-muted);">
-                本院（よどがわ内科クリニック）とも緊密に連携し、必要に応じた専門的検査や万全のバックアップ体制を整えています。
+                必要に応じた専門的検査や万全のバックアップ体制を整え、安心して受診いただける環境づくりを行っています。
               </p>
             </div>
           </div>
