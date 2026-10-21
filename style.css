@@ -667,3 +667,12 @@ img {
   flex-direction: column !important;
   justify-content: center !important;
 }
+
+/* ===================================================
+   スマホ版のみ：右上のWEB予約ボタンを非表示にする
+=================================================== */
+@media (max-width: 960px) {
+  .header-cta {
+    display: none !important;
+  }
+}
