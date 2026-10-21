@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>クリニックについて・院内ギャラリー・法定掲示｜天下茶屋駅前クリニック</title>
+  <meta name="description" content="天下茶屋駅前クリニックの院内風景・医療機器ギャラリー、および施設基準・医療情報取得加算・特商法表記・プライバシーポリシー・利用規約・AIカルテ案内などの法定掲示を掲載。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 共通ヘッダー -->
+  <div id="common-header"></div>
+
+  <main>
+    <!-- ページヒーロー -->
+    <div class="page-hero">
+      <div class="container">
+        <h1 class="page-hero-title">クリニックについて</h1>
+        <p class="page-hero-lead">院内風景・検査機器のご紹介および各種法定掲示・規約類</p>
+      </div>
+    </div>
+
+    <!-- パンくずリスト -->
+    <div class="breadcrumb">
+      <div class="container">
+        <ul class="breadcrumb-list">
+          <li><a href="index.html">HOME</a></li>
+          <li>クリニックについて</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- メインコンテンツ -->
+    <section class="section">
+      <div class="container">
+
+        <!-- =====================================================
+             1. 院内風景・医療機器ギャラリー
+        ====================================================== -->
+        <div id="gallery" class="content-block" style="margin-bottom: 56px;">
+          <h3>院内風景および検査機器のご案内</h3>
+          <p style="margin-bottom: 24px;">
+            患者さまにリラックスしてご来院いただけるよう、清潔で明るい院内環境を整えております。また、迅速な診断を行うための各種医療機器を導入しています。
+          </p>
+
+          <!-- ギャラリー用グリッド（画像ファイル名を後から差し替え可能） -->
+          <div class="grid-3">
+            <div>
+              <div class="img-placeholder" style="min-height: 220px; margin-bottom: 10px;">
+                <span style="font-size: 2.5rem; margin-bottom: 6px;">🏥</span>
+                <span style="font-size: 0.88rem; font-weight: bold;">受付・待合室</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">（images/reception.jpg）</span>
+              </div>
+              <p style="font-size: 0.9rem; font-weight: 700; color: var(--primary-dark); text-align: center;">受付・待合スペース</p>
+              <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center;">開放感があり、ゆったりとお待ちいただける明るい待合室です。</p>
+            </div>
+
+            <div>
+              <div class="img-placeholder" style="min-height: 220px; margin-bottom: 10px;">
+                <span style="font-size: 2.5rem; margin-bottom: 6px;">🩺</span>
+                <span style="font-size: 0.88rem; font-weight: bold;">診察室</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">（images/consultation.jpg）</span>
+              </div>
+              <p style="font-size: 0.9rem; font-weight: 700; color: var(--primary-dark); text-align: center;">診察室</p>
+              <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center;">お悩みを安心してお話しいただける落ち着いた個室の診察室です。</p>
+            </div>
+
+            <div>
+              <div class="img-placeholder" style="min-height: 220px; margin-bottom: 10px;">
+                <span style="font-size: 2.5rem; margin-bottom: 6px;">🔬</span>
+                <span style="font-size: 0.88rem; font-weight: bold;">検査機器・処置室</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">（images/equipment.jpg）</span>
+              </div>
+              <p style="font-size: 0.9rem; font-weight: 700; color: var(--primary-dark); text-align: center;">検査機器・処置室</p>
+              <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center;">迅速検査機器や心電図、レントゲン装置などを完備しています。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- =====================================================
+             2. 法定掲示・規約類（タブ切り替えUI）
+             ※ common.jsの機能により ?tab=xxx で直接開くことも可能です
+        ====================================================== -->
+        <div id="legal">
+          <div class="section-header" style="margin-bottom: 24px;">
+            <span class="section-subtitle">LEGAL &amp; NOTICES</span>
+            <h2 class="section-title">法定掲示・規約類</h2>
+          </div>
+          <p style="text-align: center; margin-bottom: 28px; color: var(--text-muted); font-size: 0.92rem;">
+            医療法・保険診療の施設基準および各種規約に関する重要なお知らせです。以下のタブをクリックしてご覧ください。
+          </p>
+
+          <!-- タブボタン群 -->
+          <div class="legal-tabs-nav">
+            <button class="legal-tab-btn is-active" data-tab="shisetsu">① 施設基準・掲示</button>
+            <button class="legal-tab-btn" data-tab="tokushoho">② 特商法に基づく表記</button>
+            <button class="legal-tab-btn" data-tab="privacy">③ プライバシーポリシー</button>
+            <button class="legal-tab-btn" data-tab="terms">④ 利用規約</button>
+            <button class="legal-tab-btn" data-tab="ai-policy">⑤ 個人情報利用目的・AIカルテ</button>
+          </div>
+
+          <!-- タブパネル①：施設基準・掲示 -->
+          <div class="legal-tab-panel is-active" id="panel-shisetsu">
+            <h3>① 施設基準・各種掲示</h3>
+            
+            <div class="legal-item">
+              <h4>■医療情報取得加算</h4>
+              <p>※オンライン資格確認を行う体制を有しています。</p>
+              <p>※正確な情報を取得・活用するためマイナ保険証の利用にご協力をお願いいたします。</p>
+            </div>
+
+            <div class="legal-item">
+              <h4>■一般名処方加算</h4>
+              <p>※当院では、後発医薬品の使用促進を図るとともに、医薬品の安定供給に向けた取り組みなどを実施しています。</p>
+              <p>一般名処方とはお薬の商品名だけではなく、有効成分を処方せんに掲載することです。そうすることで供給不足のお薬であっても有効成分が同じ複数のお薬が選択でき、患者様に必要なお薬が提供しやすくなります。</p>
+              <p>後発医薬品があるお薬については、説明の上、一般名（有効成分の名称）で処方する場合がございます。</p>
+            </div>
+
+            <div class="legal-item">
+              <h4>■明細書発行体制等加算</h4>
+              <p>※当院では、医療の透明化や患者様への情報提供を積極的に推進していく観点から、領収書の発行の際に、個別の診療報酬の算定項目の分かる明細書を無料で交付しております。</p>
+              <p>明細書には、使用した薬剤の名称や行われた検査の名称が記載されます。</p>
+            </div>
+
+            <div class="legal-item">
+              <h4>■夜間・早朝等加算</h4>
+              <p>※当院では、月・火・水・金の9:00～13:00、15:00～18:00、木・土の9:00～13:00を診療時間と定めています。（定期通院中の方の再診は診療終了時間の30分前、それ以外の初診などは60分前が最終受付）</p>
+              <p>厚生労働省の規定により、土曜12:00以降（および平日18:00以降）は夜間・早朝等加算が適用されます。</p>
+            </div>
+
+            <div class="legal-item">
+              <h4>■情報通信機器を用いた診療</h4>
+              <p>情報通信機器を用いた診療の初診の場合には、睡眠薬など向精神薬は処方できません。</p>
+            </div>
+
+            <div class="legal-item">
+              <h4>■外来感染対策向上加算</h4>
+              <p>当院は都道府県知事の指定を受けている第二種協定指定医療機関です。お1人につき月1回に限り所定点数（6点）を加算、発熱患者等対応加算（20点）が加算されます。</p>
+            </div>
+
+            <div class="legal-item">
+              <h4>■機能強化加算</h4>
+              <p>当院は「かかりつけ医」として、健康診断の結果に関する相談、保健・福祉サービスの利用相談、夜間・休日の緊急時の対応、および必要に応じた専門医への紹介や服薬管理を適切に行っています。</p>
+            </div>
+
+            <div class="legal-item">
+              <h4>■医療DX・電子的診療情報連携体制整備加算</h4>
+              <p>当院は、オンライン資格確認や電子処方箋等の医療DXツールを導入・活用し、他院での処方歴や検査結果等の診療情報を共有・連携して、より質の高い安全な医療の提供に努めています。</p>
+            </div>
+
+            <div class="legal-item">
+              <h4>■外来・在宅ベースアップ評価料（Ⅰ）</h4>
+              <p>当院は、医療従事者の処遇改善および資質向上を図るため、近畿厚生局に「外来・在宅ベースアップ評価料（Ⅰ）」の届出を行い、計画的な賃金改善（ベースアップ）を実施しています。</p>
+            </div>
+
+            <div class="legal-item">
+              <h4>■当院を受診される外国人患者様へ</h4>
+              <p>診察は日本語で行いますので、日本語での意思疎通に誤解が生じる可能性のある場合は、通訳者をご同伴頂きますようお願いしております。ご理解の程、よろしくお願いいたします。（目安として日本語検定N2以上が必要です）</p>
+              <p>ご家族、ご友人、もしくはご自身で手配された通訳者が同伴する場合は「外部通訳利用同意書」のご署名、ご提出をお願いしております。</p>
+              <p>外国語対応が可能な医療機関のリストは以下をご参照ください。<br>
+              厚生労働省「<a href="https://www.mhlw.go.jp/stf/newpage_05774.html" target="_blank" rel="noopener" style="text-decoration: underline;">外国人患者を受け入れる医療機関の情報を取りまとめたリスト</a>」</p>
+            </div>
+          </div>
+
+          <!-- タブパネル②：特定商取引法に基づく表記 -->
+          <div class="legal-tab-panel" id="panel-tokushoho">
+            <h3>② 特定商取引法に基づく表記</h3>
+            <div class="legal-item">
+              <h4>販売事業者名</h4>
+              <p>医療法人社団適塾会 よどがわ内科クリニック（天下茶屋駅前クリニック）</p>
+            </div>
+            <div class="legal-item">
+              <h4>運営責任者名</h4>
+              <p>院長 吉田 真也</p>
+            </div>
+            <div class="legal-item">
+              <h4>所在地</h4>
+              <p>【本院・法人所在地】〒532-0023 大阪府大阪市淀川区十三東2丁目9-10 十三駅前医療ビル2階<br>
+              【当院所在地】〒557-0041 大阪府大阪市西成区岸里1-1-4</p>
+            </div>
+            <div class="legal-item">
+              <h4>電話番号</h4>
+              <p>06-6300-7145（本院代表） / <span class="js-tel-text">06-XXXX-XXXX</span><br>
+              ※診療内容に関するお問い合わせは診療時間内にお願いいたします。</p>
+            </div>
+            <div class="legal-item">
+              <h4>メールアドレス</h4>
+              <p>※医院ホームページのお問い合わせフォーム等をご利用ください。</p>
+            </div>
+            <div class="legal-item">
+              <h4>販売価格</h4>
+              <p>診療内容（対面診療・オンライン診療・検査内容）により異なります。詳細は診療前または診療時にご案内いたします。</p>
+            </div>
+            <div class="legal-item">
+              <h4>お支払い方法</h4>
+              <p>クレジットカード決済（PAY.JP）による決済</p>
+            </div>
+            <div class="legal-item">
+              <h4>商品の引き渡し時期</h4>
+              <p>対面診療およびオンライン診療ともに、診療実施日に医療サービスを提供いたします。</p>
+            </div>
+            <div class="legal-item">
+              <h4>返品・キャンセル</h4>
+              <p>医療サービスという性質上、対面診療・オンライン診療ともに、診療・検査・処置実施後の返金およびキャンセルは受け付けておりません。</p>
+            </div>
+          </div>
+
+          <!-- タブパネル③：プライバシーポリシー -->
+          <div class="legal-tab-panel" id="panel-privacy">
+            <h3>③ プライバシーポリシー</h3>
+            <p style="margin-bottom: 16px;">当院は、患者様の個人情報の重要性を認識し、個人情報の保護に関する法律および関係法令を遵守し、以下の通り取り扱います。</p>
+            
+            <div class="legal-item">
+              <h4>1. 個人情報の収集・利用目的</h4>
+              <p>当院は、以下の目的のために必要な範囲で個人情報を収集・利用いたします。</p>
+              <ul class="check-list" style="margin-top: 8px;">
+                <li>診療、検査、処方等の医療サービスの提供</li>
+                <li>予約管理、会計、および決済手続き（クレジットカード決済等）</li>
+                <li>お問い合わせへの対応および連絡</li>
+                <li>医療保険事務および運営管理業務</li>
+              </ul>
+            </div>
+
+            <div class="legal-item">
+              <h4>2. 決済情報の取り扱い</h4>
+              <p>クレジットカード決済をご利用いただく際、カード情報は決済代行会社（PAY.JP）に直接送信され、当院のサーバーには保存されません。</p>
+            </div>
+
+            <div class="legal-item">
+              <h4>3. 第三者への提供</h4>
+              <p>当院は、法令に基づく場合や、患者様の同意を得た場合、または医療連携等の適切な範囲を除き、個人情報を第三者に提供いたしません。</p>
+            </div>
+
+            <div class="legal-item">
+              <h4>4. 安全管理措置</h4>
+              <p>当院は、個人情報の漏洩、紛失、改ざんを防止するため、適切なセキュリティ対策を講じます。</p>
+            </div>
+
+            <div class="legal-item">
+              <h4>5. お問い合わせ窓口</h4>
+              <p>個人情報の開示・訂正・利用停止等に関するお問い合わせは、当院受付までご連絡ください。</p>
+            </div>
+          </div>
+
+          <!-- タブパネル④：利用規約 -->
+          <div class="legal-tab-panel" id="panel-terms">
+            <h3>④ オンライン予約・決済 利用規約</h3>
+            <p style="margin-bottom: 16px;">本規約は、当院が提供するオンライン予約・決済サービス（以下「本サービス」）の利用条件を定めるものです。</p>
+
+            <div class="legal-item">
+              <h4>第1条（適用）</h4>
+              <p>本規約は、本サービスを利用する全ての利用者（以下「利用者」）に適用されます。</p>
+            </div>
+            <div class="legal-item">
+              <h4>第2条（予約と決済）</h4>
+              <p>利用者は、本サービスを通じて診療等の予約を行い、指定の方法で料金を支払うものとします。クレジットカード決済は、予約確定時または診療終了時に行われます。</p>
+            </div>
+            <div class="legal-item">
+              <h4>第3条（キャンセル・変更）</h4>
+              <p>予約のキャンセルや変更は、当院規定の期限までに行うものとします。期限を過ぎたキャンセル、または無断キャンセルについては、当院の定めるキャンセル料が発生する場合があります。</p>
+            </div>
+            <div class="legal-item">
+              <h4>第4条（禁止事項）</h4>
+              <p>利用者は、以下の行為を行ってはなりません。</p>
+              <ul class="check-list" style="margin-top: 8px;">
+                <li>虚偽の情報による予約または決済</li>
+                <li>他者のクレジットカードを不正に使用する行為</li>
+                <li>本サービスの運営を妨害する行為</li>
+              </ul>
+            </div>
+            <div class="legal-item">
+              <h4>第5条（サービスの停止・変更）</h4>
+              <p>当院は、システムの保守や天災等の理由により、利用者に事前通知することなく本サービスを停止または変更できるものとします。</p>
+            </div>
+            <div class="legal-item">
+              <h4>第6条（免責事項）</h4>
+              <p>通信環境の不備や、利用者の入力ミスにより生じた損害について、当院は一切の責任を負いません。</p>
+            </div>
+            <div class="legal-item">
+              <h4>第7条（準拠法・管轄裁判所）</h4>
+              <p>本規約の解釈にあたっては日本法を準拠法とし、紛争が生じた場合は当院所在地を管轄する裁判所を専属的合意管轄とします。</p>
+            </div>
+          </div>
+
+          <!-- タブパネル⑤：個人情報利用目的・AIカルテ -->
+          <div class="legal-tab-panel" id="panel-ai-policy">
+            <h3>⑤ 個人情報の利用目的およびAI診療録作成補助について</h3>
+            <p style="margin-bottom: 16px;">当院では、患者さまに安心して質の高い医療を受けていただくため、個人情報の保護に関する法令（個人情報保護法）および厚生労働省のガイダンスを遵守し、以下の目的の範囲内で患者さまの個人情報を利用いたします。</p>
+
+            <div class="legal-item">
+              <h4>【院内での医療サービスの提供および管理】</h4>
+              <ul class="check-list">
+                <li>当院での医療サービスの提供</li>
+                <li>診療録（カルテ）の作成・管理</li>
+                <li>会計・経理業務および審査支払機関へのレセプト（診療報酬明細書）の提出</li>
+                <li>医療事故等の報告、安全確保・医療の質向上のための院内管理業務</li>
+              </ul>
+            </div>
+
+            <div class="legal-item">
+              <h4>【他の医療機関等との連携および情報提供】</h4>
+              <ul class="check-list">
+                <li>他の病院、診療所、助産所、薬局、訪問看護ステーション、介護サービス事業者等との円滑な連携</li>
+                <li>他の医療機関等からの照会に対する回答</li>
+                <li>患者さまの診療のため、外部の医師等の意見・助言を求める場合</li>
+                <li>検体検査業務等の信頼できる専門業者への委託</li>
+              </ul>
+            </div>
+
+            <div class="legal-item" style="background: var(--primary-light); padding: 20px; border-radius: 8px; border-left: 4px solid var(--primary);">
+              <h4 style="background: transparent; padding: 0; color: var(--primary-dark);">【AI技術を活用した診療録作成補助について】</h4>
+              <p style="margin-bottom: 10px;">当院では、医師が患者さまのお話に深く耳を傾け、診療に集中できる環境を整えるとともに、より正確な診療録（カルテ）を作成するため、AIを活用した診療録作成補助システム（音声録音および文字起こし処理）を導入しております。</p>
+              <ul class="check-list">
+                <li><strong>利用目的：</strong>診察時の会話を録音・文字起こしし、診療録の作成補助（下書き作成等）にのみ利用します。</li>
+                <li><strong>安全管理：</strong>録音された音声およびテキストデータは、厳格なセキュリティを担保した環境で処理され、外部に流出することや、AIの公開学習等に二次利用されることは一切ありません。</li>
+                <li><strong>お申し出について：</strong>診察時の録音を希望されない場合は、診察前にスタッフまたは医師までお気軽にお申し出ください。お申し出があった場合は録音を行わず、通常の診療を行います。また、それにより診療上の不利益が生じることは一切ありません。</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- 共通フッター -->
+  <div id="common-footer"></div>
+
+  <script src="common.js"></script>
+</body>
+</html>
