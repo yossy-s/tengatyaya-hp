@@ -143,7 +143,7 @@
       </div>
     </section>
 
-    <!-- お知らせ一覧 -->
+    <!-- お知らせ一覧（CSVから自動読み込み） -->
     <section class="section" style="padding-top: 40px; padding-bottom: 40px;">
       <div class="container">
         <div class="section-header" style="margin-bottom: 32px;">
@@ -151,12 +151,8 @@
           <h2 class="section-title">お知らせ</h2>
         </div>
         <div class="news-box">
-          <ul class="news-list">
-            <li>
-              <span class="news-date">2026.10.21</span>
-              <span class="news-tag important">重要</span>
-              <span class="news-text">天下茶屋駅前クリニック 公式ホームページを開設いたしました。</span>
-            </li>
+          <ul class="news-list" id="news-list-container">
+            <li><span class="news-text" style="text-align: center; color: var(--text-muted);">読み込み中...</span></li>
           </ul>
         </div>
       </div>
@@ -181,6 +177,4 @@
 
   <script src="common.js"></script>
 </body>
-
-
 </html>

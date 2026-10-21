@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   bindDynamicLinks();
   initHamburgerMenu();
   initLegalTabs();
+  initNewsLoader(); // ★お知らせCSV自動読み込みの初期化
 });
 
 // 現在のファイル名を取得してナビのアクティブ状態を判定
@@ -345,4 +346,67 @@ function initLegalTabs() {
   if (targetTab) {
     activateTab(targetTab);
   }
+}
+
+/**
+ * 8. お知らせ用CSVを読み込んでトップページに自動反映する処理
+ */
+function initNewsLoader() {
+  const container = document.getElementById("news-list-container");
+  if (!container) return; // トップページ以外では実行しない
+
+  fetch("news.csv")
+    .then(response => {
+      if (!response.ok) throw new Error("CSVファイルの読み込みに失敗しました。");
+      return response.text();
+    })
+    .then(csvText => {
+      const rows = csvText.split("\n");
+      let html = "";
+
+      // 1行目は見出しなのでスキップし、2行目からループ
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i].trim();
+        if (!row) continue;
+
+        const cols = row.split(",");
+        const date = cols[0] ? cols[0].replace(/"/g, "").trim() : "";
+        const category = cols[1] ? cols[1].replace(/"/g, "").trim() : "";
+        const text = cols[2] ? cols[2].replace(/"/g, "").trim() : "";
+        const url = cols[3] ? cols[3].replace(/"/g, "").trim() : "";
+
+        if (!date || !text) continue;
+
+        // カテゴリーが「重要」等の場合にCSSクラスを切り替える判定
+        let tagClass = "news-tag";
+        if (category === "重要") {
+          tagClass += " important";
+        }
+
+        let textHtml = "";
+        if (url && url !== "#" && url !== "") {
+          textHtml = `<a href="${url}" class="news-text" style="color: inherit; text-decoration: underline;">${text}</a>`;
+        } else {
+          textHtml = `<span class="news-text">${text}</span>`;
+        }
+
+        html += `
+          <li>
+            <span class="news-date">${date}</span>
+            <span class="${tagClass}">${category}</span>
+            ${textHtml}
+          </li>
+        `;
+      }
+
+      if (html !== "") {
+        container.innerHTML = html;
+      } else {
+        container.innerHTML = '<li><span class="news-text">現在、お知らせはありません。</span></li>';
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      container.innerHTML = '<li><span class="news-text" style="color: var(--danger);">お知らせの読み込みに失敗しました。</span></li>';
+    });
 }
