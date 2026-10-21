@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <!-- 共通ヘッダー -->
+  <!-- 共通ヘッダー（common.jsにより上部ショートカット付きで自動描画されます） -->
   <div id="common-header"></div>
 
   <main>
@@ -35,15 +35,30 @@
     <section class="section">
       <div class="container">
 
-        <!-- ページ内目次（ページ内アンカーリンクでスムーズスクロール） -->
+        <!-- ページ内目次（スタイリッシュな縦並びボタン仕様） -->
         <div class="toc-box">
-          <div class="toc-title">📌 目次（クリックで各項目へジャンプします）</div>
-          <div class="toc-list">
-            <a href="#belongings">1. ご持参いただく持ち物（マイナ保険証）</a>
-            <a href="#reception">2. 初診・再診の最終受付時間</a>
-            <a href="#rules">3. WEB予約・キャンセルルール</a>
-            <a href="#fever-flow">4. 発熱患者様の受診フロー</a>
-            <a href="#ai-chart">5. AIカルテ作成補助に関するご案内</a>
+          <div class="toc-title" style="margin-bottom: 16px;">📌 目次（タップで各項目へジャンプします）</div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <a href="#belongings" style="display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 14px 18px; border-radius: 10px; font-weight: 700; color: var(--primary-dark); border: 1px solid var(--border-color); box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: all 0.2s;" onmouseover="this.style.background='var(--primary)';this.style.color='#fff';" onmouseout="this.style.background='#fff';this.style.color='var(--primary-dark)';">
+              <span>1. ご持参いただく持ち物（マイナ保険証）</span>
+              <span style="font-size: 0.9rem;">›</span>
+            </a>
+            <a href="#reception" style="display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 14px 18px; border-radius: 10px; font-weight: 700; color: var(--primary-dark); border: 1px solid var(--border-color); box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: all 0.2s;" onmouseover="this.style.background='var(--primary)';this.style.color='#fff';" onmouseout="this.style.background='#fff';this.style.color='var(--primary-dark)';">
+              <span>2. 初診・再診の最終受付時間</span>
+              <span style="font-size: 0.9rem;">›</span>
+            </a>
+            <a href="#rules" style="display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 14px 18px; border-radius: 10px; font-weight: 700; color: var(--primary-dark); border: 1px solid var(--border-color); box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: all 0.2s;" onmouseover="this.style.background='var(--primary)';this.style.color='#fff';" onmouseout="this.style.background='#fff';this.style.color='var(--primary-dark)';">
+              <span>3. WEB予約・キャンセルルール</span>
+              <span style="font-size: 0.9rem;">›</span>
+            </a>
+            <a href="#fever-flow" style="display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 14px 18px; border-radius: 10px; font-weight: 700; color: var(--primary-dark); border: 1px solid var(--border-color); box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: all 0.2s;" onmouseover="this.style.background='var(--primary)';this.style.color='#fff';" onmouseout="this.style.background='#fff';this.style.color='var(--primary-dark)';">
+              <span>4. 発熱患者様の受診フロー</span>
+              <span style="font-size: 0.9rem;">›</span>
+            </a>
+            <a href="#ai-chart" style="display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 14px 18px; border-radius: 10px; font-weight: 700; color: var(--primary-dark); border: 1px solid var(--border-color); box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: all 0.2s;" onmouseover="this.style.background='var(--primary)';this.style.color='#fff';" onmouseout="this.style.background='#fff';this.style.color='var(--primary-dark)';">
+              <span>5. AIカルテ作成補助に関するご案内</span>
+              <span style="font-size: 0.9rem;">›</span>
+            </a>
           </div>
         </div>
 
@@ -75,11 +90,11 @@
               ⏰ 最終受付の締め切り時間
             </div>
             <ul style="padding-left: 20px; line-height: 1.8;">
-              <li><strong>定期通院中の方の再診：</strong>診療終了時間の<strong>30分前</strong>まで<br>
-                <span style="font-size: 0.88rem; color: var(--text-muted);">（午前診は12:30まで / 午後診は17:30まで）</span>
+              <li><strong>再診の方：</strong>診療終了時間まで<br>
+                <span style="font-size: 0.88rem; color: var(--text-muted);">（午前診は13:00まで / 午後診は18:00まで）</span>
               </li>
-              <li><strong>それ以外の初診・急な症状の方：</strong>診療終了時間の<strong>60分前</strong>まで<br>
-                <span style="font-size: 0.88rem; color: var(--text-muted);">（午前診は12:00まで / 午後診は17:00まで）</span>
+              <li><strong>初診の方、ワクチン接種の方：</strong>診療終了時間の<strong>30分前</strong>まで<br>
+                <span style="font-size: 0.88rem; color: var(--text-muted);">（午前診は12:30まで / 午後診は17:30まで）</span>
               </li>
             </ul>
           </div>
@@ -143,7 +158,7 @@
     </section>
   </main>
 
-  <!-- 共通フッター -->
+  <!-- 共通フッター（common.jsにより自動描画されます） -->
   <div id="common-footer"></div>
 
   <script src="common.js"></script>

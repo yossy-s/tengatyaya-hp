@@ -578,3 +578,56 @@ img {
   font-weight: 600;
   color: var(--text-main);
 }
+
+/* ===================================================
+   予約ナビモーダル用 スタイリッシュボタンの強化
+=================================================== */
+.navi-option-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  padding: 18px 24px !important;
+  background-color: #ffffff !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-md) !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  color: var(--text-main) !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+}
+
+.navi-option-btn::after {
+  content: "›";
+  font-size: 1.2rem;
+  color: var(--primary);
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.navi-option-btn:hover {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 20px rgba(18, 122, 98, 0.2) !important;
+}
+
+.navi-option-btn:hover::after {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.navi-option-btn.primary {
+  background-color: var(--primary-light) !important;
+  border-color: #a3d9cd !important;
+  color: var(--primary-dark) !important;
+}
+
+.navi-option-btn.primary:hover {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+  color: #ffffff !important;
+}

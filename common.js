@@ -50,7 +50,7 @@ function getCurrentPage() {
   return page === "" ? "index.html" : page;
 }
 
-// 1. 共通ヘッダーの描画（上部にクイックアイコンナビ常設）
+// 1. 共通ヘッダーの描画（「当院について」を削除し4つに絞ったクイックナビ）
 function renderHeader() {
   const headerPlaceholder = document.getElementById("common-header");
   if (!headerPlaceholder) return;
@@ -71,13 +71,12 @@ function renderHeader() {
           </div>
         </div>
 
-        <!-- 下段：スマホ用クイックアイコンナビ（スクロール可能） -->
+        <!-- 下段：スマホ用クイックアイコンナビ -->
         <div class="mobile-quick-nav" style="display: flex; gap: 6px; overflow-x: auto; padding-top: 8px; border-top: 1px solid var(--border-color); margin-top: 6px; white-space: nowrap;">
           <a href="staff.html" style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary-dark); padding: 4px 10px; border-radius: 4px; font-weight: 700;">👨‍⚕️ 院長紹介</a>
           <a href="service.html" style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary-dark); padding: 4px 10px; border-radius: 4px; font-weight: 700;">🩺 診療内容</a>
           <a href="guide.html" style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary-dark); padding: 4px 10px; border-radius: 4px; font-weight: 700;">📋 受診案内</a>
           <a href="access.html" style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary-dark); padding: 4px 10px; border-radius: 4px; font-weight: 700;">📍 アクセス</a>
-          <a href="about.html" style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary-dark); padding: 4px 10px; border-radius: 4px; font-weight: 700;">🏥 当院について</a>
         </div>
       </div>
     </header>
@@ -203,7 +202,7 @@ function initMenuModal() {
   });
 }
 
-// 4. 予約ナビ（スタイリッシュ＆大きめウィンドウのモーダル構築）
+// 4. 予約ナビ（スタイリッシュなボタンデザイン）
 function initReservationModal() {
   const modalWrap = document.createElement("div");
   modalWrap.id = "reserve-navi-modal";
@@ -248,10 +247,10 @@ function initReservationModal() {
       case "top":
         html = `
           <p style="font-weight: 700; color: #2d3748; margin-bottom: 24px; text-align: center; font-size: 1.15rem;">ご希望の予約項目を選択してください。</p>
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <button class="navi-option-btn" onclick="openStep('shisatsu_q1')">診察予約</button>
-            <button class="navi-option-btn" onclick="location.href='${CLINIC_CONFIG.kenkoUrl}'">健康診断予約</button>
-            <button class="navi-option-btn" onclick="location.href='${CLINIC_CONFIG.vaccineUrl}'">ワクチン接種予約</button>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <button class="navi-option-btn" onclick="openStep('shisatsu_q1')"><span>🏥 診察のご予約</span></button>
+            <button class="navi-option-btn" onclick="location.href='${CLINIC_CONFIG.kenkoUrl}'"><span>📋 健康診断のご予約</span></button>
+            <button class="navi-option-btn" onclick="location.href='${CLINIC_CONFIG.vaccineUrl}'"><span>💉 ワクチン接種のご予約</span></button>
           </div>
         `;
         break;
@@ -262,9 +261,9 @@ function initReservationModal() {
             <p style="font-size: 1.1rem; font-weight: 700; color: #2d3748; line-height: 1.7; margin-bottom: 8px;">3日以内に37.5℃を超える発熱がありますか？</p>
             <p style="font-size: 1.1rem; font-weight: 700; color: #2d3748; line-height: 1.7;">またはインフルエンザ・コロナの抗原検査を希望しますか？</p>
           </div>
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <button class="navi-option-btn primary" onclick="location.href='${CLINIC_CONFIG.feverUrl}'">はい（発熱外来 or 抗原検査）</button>
-            <button class="navi-option-btn" onclick="openStep('shisatsu_hatsunetsu_no', 'top')">いいえ</button>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <button class="navi-option-btn primary" onclick="location.href='${CLINIC_CONFIG.feverUrl}'"><span>🌡️ はい（発熱外来 または 抗原検査）</span></button>
+            <button class="navi-option-btn" onclick="openStep('shisatsu_hatsunetsu_no', 'top')"><span>✨ いいえ（通常診療）</span></button>
           </div>
         `;
         backStep = "top";
@@ -273,9 +272,9 @@ function initReservationModal() {
       case "shisatsu_hatsunetsu_no":
         html = `
           <p style="font-weight: 700; color: #2d3748; margin-bottom: 24px; text-align: center; font-size: 1.15rem;">当院へ初めて受診されますか？</p>
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <button class="navi-option-btn" onclick="location.href='${CLINIC_CONFIG.shoshinUrl}'">初めて受診します（初診）</button>
-            <button class="navi-option-btn" onclick="openStep('shisatsu_riin_check', 'shisatsu_q1')">来院したことがある</button>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <button class="navi-option-btn" onclick="location.href='${CLINIC_CONFIG.shoshinUrl}'"><span>👋 初めて受診します（初診）</span></button>
+            <button class="navi-option-btn" onclick="openStep('shisatsu_riin_check', 'shisatsu_q1')"><span>🏥 以前に来院したことがある</span></button>
           </div>
         `;
         backStep = "shisatsu_q1";
@@ -284,9 +283,9 @@ function initReservationModal() {
       case "shisatsu_riin_check":
         html = `
           <p style="font-weight: 700; color: #2d3748; margin-bottom: 24px; text-align: center; font-size: 1.15rem;">現在の通院状況についてお選びください。</p>
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <button class="navi-option-btn" onclick="location.href='${CLINIC_CONFIG.saisinUrl}'">はい（定期通院中）</button>
-            <button class="navi-option-btn" onclick="openStep('shisatsu_month_check', 'shisatsu_hatsunetsu_no')">いいえ（定期通院ではない）</button>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <button class="navi-option-btn" onclick="location.href='${CLINIC_CONFIG.saisinUrl}'"><span>🔄 はい（定期通院中）</span></button>
+            <button class="navi-option-btn" onclick="openStep('shisatsu_month_check', 'shisatsu_hatsunetsu_no')"><span>💭 いいえ（定期通院ではない）</span></button>
           </div>
         `;
         backStep = "shisatsu_hatsunetsu_no";
@@ -295,9 +294,9 @@ function initReservationModal() {
       case "shisatsu_month_check":
         html = `
           <p style="font-weight: 700; color: #2d3748; margin-bottom: 24px; text-align: center; font-size: 1.15rem;">前回の来院から1ヶ月以上空いていますか？</p>
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <button class="navi-option-btn" onclick="location.href='${CLINIC_CONFIG.shoshinUrl}'">はい（1ヶ月以上空いている）</button>
-            <button class="navi-option-btn" onclick="location.href='${CLINIC_CONFIG.saisinUrl}'">いいえ（1ヶ月以内である）</button>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <button class="navi-option-btn" onclick="location.href='${CLINIC_CONFIG.shoshinUrl}'"><span>📅 はい（1ヶ月以上空いている）</span></button>
+            <button class="navi-option-btn" onclick="location.href='${CLINIC_CONFIG.saisinUrl}'"><span>⚡ いいえ（1ヶ月以内である）</span></button>
           </div>
         `;
         backStep = "shisatsu_riin_check";

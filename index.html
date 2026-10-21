@@ -118,8 +118,55 @@
       </div>
     </div>
 
-    <!-- お知らせ一覧（画像の下・診療時間の上に配置） -->
-    <section class="section" style="padding-top: 30px; padding-bottom: 30px;">
+    <!-- =====================================================
+         各ページへの誘導カード（バナー）セクション新設
+    ====================================================== -->
+    <section class="section" style="padding-top: 20px; padding-bottom: 20px;">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+          
+          <!-- 1. 院長・スタッフ紹介カード -->
+          <a href="staff.html" style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 16px; transition: transform 0.2s, border-color 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='var(--primary)';" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='var(--border-color)';">
+            <div style="font-size: 2.2rem; background: var(--primary-light); width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">👨‍⚕️</div>
+            <div>
+              <h3 style="font-size: 1.05rem; color: var(--primary-dark); margin-bottom: 4px; font-weight: 800;">院長・スタッフ紹介</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">呼吸器専門医によるご挨拶や、スタッフの体制をご紹介 ›</p>
+            </div>
+          </a>
+
+          <!-- 2. 診療内容カード -->
+          <a href="service.html" style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 16px; transition: transform 0.2s, border-color 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='var(--primary)';" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='var(--border-color)';">
+            <div style="font-size: 2.2rem; background: var(--primary-light); width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">🩺</div>
+            <div>
+              <h3 style="font-size: 1.05rem; color: var(--primary-dark); margin-bottom: 4px; font-weight: 800;">診療内容のご案内</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">発熱外来・生活習慣病・呼吸器内科・健診などに対応 ›</p>
+            </div>
+          </a>
+
+          <!-- 3. 受診予定の方へカード -->
+          <a href="guide.html" style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 16px; transition: transform 0.2s, border-color 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='var(--primary)';" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='var(--border-color)';">
+            <div style="font-size: 2.2rem; background: var(--primary-light); width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">📋</div>
+            <div>
+              <h3 style="font-size: 1.05rem; color: var(--primary-dark); margin-bottom: 4px; font-weight: 800;">受診予定の方へ</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">マイナ保険証の持ち物や、最終受付時間・予約ルール ›</p>
+            </div>
+          </a>
+
+          <!-- 4. アクセス・診療時間カード -->
+          <a href="access.html" style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 16px; transition: transform 0.2s, border-color 0.2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='var(--primary)';" onmouseout="this.style.transform='translateY(0)';this.style.borderColor='var(--border-color)';">
+            <div style="font-size: 2.2rem; background: var(--primary-light); width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">📍</div>
+            <div>
+              <h3 style="font-size: 1.05rem; color: var(--primary-dark); margin-bottom: 4px; font-weight: 800;">アクセス・診療時間</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">天下茶屋駅すぐの所在地、詳細なスケジュール表 ›</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- お知らせ一覧 -->
+    <section class="section" style="padding-top: 20px; padding-bottom: 30px;">
       <div class="container">
         <div class="section-header" style="margin-bottom: 24px;">
           <span class="section-subtitle">NEWS &amp; INFORMATION</span>
@@ -133,7 +180,7 @@
       </div>
     </section>
 
-    <!-- ご受診・ご予約について ＆ 発熱症状のある方へ（PCでは横並び、スマホでは縦並びに自動切替） -->
+    <!-- ご受診・ご予約について ＆ 発熱症状のある方へ -->
     <section class="section" style="padding-bottom: 20px; padding-top: 20px;">
       <div class="container">
         <div class="grid-2" style="gap: 24px;">
