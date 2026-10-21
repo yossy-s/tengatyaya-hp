@@ -37,11 +37,11 @@
         
         <!-- 院長ご挨拶 -->
         <div class="content-block" style="margin-bottom: 48px;">
-          <div style="display: grid; grid-template-columns: 280px 1fr; gap: 36px; align-items: center;" class="staff-grid">
+          <div class="staff-grid">
             <div>
-              <!-- 院長写真（images/doctor-photo.jpg を読み込む設定） -->
-              <div class="director-photo-wrap">
-                <img src="images/doctor-photo.jpg" alt="院長 伊東 友好" style="width: 100%; height: auto; border-radius: 8px; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+              <!-- 院長写真 -->
+              <div class="director-photo-wrap" style="max-width: 320px; margin: 0 auto 20px;">
+                <img src="images/doctor-photo.jpg" alt="院長 伊東 友好" style="width: 100%; height: auto; border-radius: 8px; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: block;">
               </div>
             </div>
             <div>
@@ -100,23 +100,37 @@
         <!-- スタッフ体制・クリニックの理念 -->
         <div class="content-block">
           <h3>スタッフ体制と診療方針</h3>
-          <p style="margin-bottom: 16px;">
+          <p style="margin-bottom: 24px;">
             当院では、医師をはじめ看護師、医療事務スタッフがチーム一丸となり、患者さまの不安や苦痛に寄り添った対応を心がけております。
           </p>
           <div class="grid-3" style="margin-top: 24px;">
-            <div style="background: var(--primary-light); padding: 20px; border-radius: 8px;">
+            <!-- 看護師チーム -->
+            <div style="background: var(--primary-light); padding: 20px; border-radius: 8px; display: flex; flex-direction: column;">
+              <div style="margin-bottom: 14px; overflow: hidden; border-radius: 6px;">
+                <img src="images/staff-ns.jpg" alt="看護師チーム" style="width: 100%; height: 160px; object-fit: cover; display: block;">
+              </div>
               <h4 style="color: var(--primary-dark); margin-bottom: 8px; font-size: 1rem;">👩‍⚕️ 看護師チーム</h4>
               <p style="font-size: 0.9rem; color: var(--text-muted);">
                 丁寧な問診と優しい対応で、患者さまの緊張を和らげ、安全でスムーズな検査・処置をサポートします。
               </p>
             </div>
-            <div style="background: var(--primary-light); padding: 20px; border-radius: 8px;">
+
+            <!-- 受付・事務スタッフ -->
+            <div style="background: var(--primary-light); padding: 20px; border-radius: 8px; display: flex; flex-direction: column;">
+              <div style="margin-bottom: 14px; overflow: hidden; border-radius: 6px;">
+                <img src="images/staff-jimu.jpg" alt="受付・事務スタッフ" style="width: 100%; height: 160px; object-fit: cover; display: block;">
+              </div>
               <h4 style="color: var(--primary-dark); margin-bottom: 8px; font-size: 1rem;">受付・事務スタッフ</h4>
               <p style="font-size: 0.9rem; color: var(--text-muted);">
                 明るく丁寧な窓口対応に加え、マイナ保険証やWEB予約・WEB問診の操作サポートなど、快適な受診環境を提供します。
               </p>
             </div>
-            <div style="background: var(--primary-light); padding: 20px; border-radius: 8px;">
+
+            <!-- 連携体制 -->
+            <div style="background: var(--primary-light); padding: 20px; border-radius: 8px; display: flex; flex-direction: column;">
+              <div style="margin-bottom: 14px; overflow: hidden; border-radius: 6px;">
+                <img src="images/staff-renkei.jpg" alt="連携体制" style="width: 100%; height: 160px; object-fit: cover; display: block;">
+              </div>
               <h4 style="color: var(--primary-dark); margin-bottom: 8px; font-size: 1rem;">🤝 連携体制</h4>
               <p style="font-size: 0.9rem; color: var(--text-muted);">
                 必要に応じた専門的検査や万全のバックアップ体制を整え、安心して受診いただける環境づくりを行っています。

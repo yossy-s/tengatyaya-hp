@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderMobileBar();
   initReservationModal(); 
   bindDynamicLinks();
-  initHamburgerMenu();
   initLegalTabs();
   initNewsLoader(); // ★お知らせCSV自動読み込みの初期化
 });
@@ -51,52 +50,35 @@ function getCurrentPage() {
   return page === "" ? "index.html" : page;
 }
 
-// 1. 共通ヘッダーの描画
+// 1. 共通ヘッダーの描画（上部にクイックアイコンナビ常設）
 function renderHeader() {
   const headerPlaceholder = document.getElementById("common-header");
   if (!headerPlaceholder) return;
 
-  const current = getCurrentPage();
-  const isActive = (target) => (current === target ? "active" : "");
-
   headerPlaceholder.innerHTML = `
     <header class="site-header">
-      <div class="header-inner">
-        <div class="site-logo">
-          <a href="index.html">
-            <span class="logo-sub">${CLINIC_CONFIG.corpName}｜南海・天下茶屋駅すぐ</span>
-            <span class="logo-main">${CLINIC_CONFIG.clinicName}</span>
-          </a>
+      <div class="header-inner" style="flex-direction: column; align-items: stretch; padding: 8px 16px;">
+        <!-- 上段：ロゴとWEB予約ボタン -->
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+          <div class="site-logo">
+            <a href="index.html">
+              <span class="logo-sub">${CLINIC_CONFIG.corpName}｜南海・天下茶屋駅すぐ</span>
+              <span class="logo-main">${CLINIC_CONFIG.clinicName}</span>
+            </a>
+          </div>
+          <div class="header-cta">
+            <a href="#" class="btn btn-reserve js-open-reserve-navi" style="padding: 8px 14px; font-size: 0.8rem;">📅 WEB予約</a>
+          </div>
         </div>
 
-        <button class="hamburger" id="js-hamburger" aria-label="メニューを開く">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-        <nav class="header-nav" id="js-nav">
-          <ul class="nav-list">
-            <li class="nav-item"><a href="index.html" class="nav-link ${isActive("index.html")}">HOME</a></li>
-            <li class="nav-item"><a href="staff.html" class="nav-link ${isActive("staff.html")}">院長・スタッフ紹介</a></li>
-            <li class="nav-item">
-              <a href="service.html" class="nav-link ${isActive("service.html")}">診療内容 ▾</a>
-              <ul class="dropdown-menu">
-                <li><a href="service.html#fever">発熱外来</a></li>
-                <li><a href="service.html#lifestyle">生活習慣病</a></li>
-                <li><a href="service.html#vaccine">予防接種・ワクチン</a></li>
-                <li><a href="service.html#respiratory">呼吸器内科</a></li>
-                <li><a href="service.html#checkup">健康診断</a></li>
-              </ul>
-            </li>
-            <li class="nav-item"><a href="guide.html" class="nav-link ${isActive("guide.html")}">受診予定の方へ</a></li>
-            <li class="nav-item"><a href="access.html" class="nav-link ${isActive("access.html")}">アクセス/診療時間</a></li>
-            <li class="nav-item"><a href="about.html" class="nav-link ${isActive("about.html")}">クリニックについて</a></li>
-          </ul>
-          <div class="header-cta">
-            <a href="#" class="btn btn-reserve js-open-reserve-navi">📅 WEB予約はこちら</a>
-          </div>
-        </nav>
+        <!-- 下段：スマホ用クイックアイコンナビ（スクロール可能） -->
+        <div class="mobile-quick-nav" style="display: flex; gap: 6px; overflow-x: auto; padding-top: 8px; border-top: 1px solid var(--border-color); margin-top: 6px; white-space: nowrap;">
+          <a href="staff.html" style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary-dark); padding: 4px 10px; border-radius: 4px; font-weight: 700;">👨‍⚕️ 院長紹介</a>
+          <a href="service.html" style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary-dark); padding: 4px 10px; border-radius: 4px; font-weight: 700;">🩺 診療内容</a>
+          <a href="guide.html" style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary-dark); padding: 4px 10px; border-radius: 4px; font-weight: 700;">📋 受診案内</a>
+          <a href="access.html" style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary-dark); padding: 4px 10px; border-radius: 4px; font-weight: 700;">📍 アクセス</a>
+          <a href="about.html" style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary-dark); padding: 4px 10px; border-radius: 4px; font-weight: 700;">🏥 当院について</a>
+        </div>
       </div>
     </header>
   `;
@@ -156,14 +138,18 @@ function renderFooter() {
   `;
 }
 
-// 3. スマホ画面下部の固定バー（電話・WEB予約）
+// 3. スマホ画面下部の固定バー（3分割：電話・メニュー・WEB予約）
 function renderMobileBar() {
   const bar = document.createElement("div");
-  bar.className = "mobile-fixed-bar";
+  bar.className = "mobile-fixed-bar-3";
   bar.innerHTML = `
     <a href="tel:${CLINIC_CONFIG.telLink}" class="mobile-bar-btn mobile-bar-tel">
       <span class="mobile-bar-icon">📞</span>
       <span>電話する</span>
+    </a>
+    <a href="#" class="mobile-bar-btn mobile-bar-menu js-open-menu-modal">
+      <span class="mobile-bar-icon">🗂️</span>
+      <span>メニュー</span>
     </a>
     <a href="#" class="mobile-bar-btn mobile-bar-reserve js-open-reserve-navi">
       <span class="mobile-bar-icon">📅</span>
@@ -171,6 +157,50 @@ function renderMobileBar() {
     </a>
   `;
   document.body.appendChild(bar);
+  initMenuModal();
+}
+
+// スマホ用「メニュー一覧」ポップアップモーダルの初期化
+function initMenuModal() {
+  const modalWrap = document.createElement("div");
+  modalWrap.id = "site-menu-modal";
+  modalWrap.style.cssText = `
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(12, 56, 47, 0.65); backdrop-filter: blur(6px); z-index: 2000; justify-content: center; align-items: flex-end;
+  `;
+
+  modalWrap.innerHTML = `
+    <div style="background: #ffffff; width: 100%; max-height: 80vh; border-radius: 20px 20px 0 0; padding: 32px 24px; box-shadow: 0 -10px 30px rgba(0,0,0,0.2); overflow-y: auto; position: relative;">
+      <button id="menu-close-btn" style="position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #718096;">✕</button>
+      
+      <div style="text-align: center; margin-bottom: 24px;">
+        <span style="font-size: 0.78rem; font-weight: 700; color: #127a62; letter-spacing: 0.15em; text-transform: uppercase;">Site Menu</span>
+        <h3 style="font-size: 1.3rem; color: #0c5241; margin-top: 4px; font-weight: 800;">メニュー一覧</h3>
+      </div>
+
+      <ul style="display: flex; flex-direction: column; gap: 12px; padding-bottom: 20px;">
+        <li><a href="index.html" style="display: block; padding: 14px 18px; background: #f7fafc; border-radius: 10px; font-weight: 700; color: #2d3748; font-size: 1rem;">🏠 HOME（トップページ）</a></li>
+        <li><a href="staff.html" style="display: block; padding: 14px 18px; background: #f7fafc; border-radius: 10px; font-weight: 700; color: #2d3748; font-size: 1rem;">👨‍⚕️ 院長・スタッフ紹介</a></li>
+        <li><a href="service.html" style="display: block; padding: 14px 18px; background: #f7fafc; border-radius: 10px; font-weight: 700; color: #2d3748; font-size: 1rem;">🩺 診療内容（発熱外来・生活習慣病など）</a></li>
+        <li><a href="guide.html" style="display: block; padding: 14px 18px; background: #f7fafc; border-radius: 10px; font-weight: 700; color: #2d3748; font-size: 1rem;">📋 受診予定の方へ（持ち物・最終受付）</a></li>
+        <li><a href="access.html" style="display: block; padding: 14px 18px; background: #f7fafc; border-radius: 10px; font-weight: 700; color: #2d3748; font-size: 1rem;">📍 アクセス・診療時間</a></li>
+        <li><a href="about.html" style="display: block; padding: 14px 18px; background: #f7fafc; border-radius: 10px; font-weight: 700; color: #2d3748; font-size: 1rem;">🏥 クリニックについて・法定掲示</a></li>
+      </ul>
+    </div>
+  `;
+  document.body.appendChild(modalWrap);
+
+  const closeMenu = () => { modalWrap.style.display = "none"; };
+  document.getElementById("menu-close-btn").addEventListener("click", closeMenu);
+  modalWrap.addEventListener("click", (e) => { if (e.target === modalWrap) closeMenu(); });
+
+  document.addEventListener("click", (e) => {
+    const trigger = e.target.closest(".js-open-menu-modal");
+    if (trigger) {
+      e.preventDefault();
+      modalWrap.style.display = "flex";
+    }
+  });
 }
 
 // 4. 予約ナビ（スタイリッシュ＆大きめウィンドウのモーダル構築）
@@ -184,21 +214,19 @@ function initReservationModal() {
 
   modalWrap.innerHTML = `
     <div style="background: #ffffff; width: 100%; max-width: 680px; border-radius: 16px; padding: 48px 44px; box-shadow: 0 25px 50px rgba(0,0,0,0.2); position: relative; max-height: 90vh; overflow-y: auto;">
-      <button id="navi-close-btn" style="position: absolute; top: 22px; right: 26px; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: #718096; transition: color 0.2s;" onmouseover="this.style.color='#127a62'" onmouseout="this.style.color='#718096'">✕</button>
+      <button id="navi-close-btn" style="position: absolute; top: 22px; right: 26px; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: #718096;">✕</button>
       
       <div style="margin-bottom: 32px; text-align: center;">
         <span style="font-size: 0.85rem; font-weight: 700; color: #127a62; letter-spacing: 0.2em; text-transform: uppercase;">Reservation Navi</span>
-        <h3 style="font-size: 1.6rem; color: #0c5241; margin-top: 6px; font-weight: 800; letter-spacing: 0.03em;">WEB予約ご案内ナビ</h3>
+        <h3 style="font-size: 1.6rem; color: #0c5241; margin-top: 6px; font-weight: 800;">WEB予約ご案内ナビ</h3>
       </div>
 
-      <!-- ナビの各ステップ表示エリア -->
       <div id="navi-step-container"></div>
     </div>
   `;
   document.body.appendChild(modalWrap);
 
   const closeNavi = () => { modalWrap.style.display = "none"; };
-  
   document.getElementById("navi-close-btn").addEventListener("click", closeNavi);
   modalWrap.addEventListener("click", (e) => { if (e.target === modalWrap) closeNavi(); });
 
@@ -211,7 +239,6 @@ function initReservationModal() {
     }
   });
 
-  // 予約ナビのステップ制御ロジック
   window.openStep = function(stepId, historyState = null) {
     const container = document.getElementById("navi-step-container");
     let html = "";
@@ -220,7 +247,7 @@ function initReservationModal() {
     switch(stepId) {
       case "top":
         html = `
-          <p style="font-weight: 700; color: #2d3748; margin-bottom: 24px; text-align: center; font-size: 1.15rem; letter-spacing: 0.02em;">ご希望の予約項目を選択してください。</p>
+          <p style="font-weight: 700; color: #2d3748; margin-bottom: 24px; text-align: center; font-size: 1.15rem;">ご希望の予約項目を選択してください。</p>
           <div style="display: flex; flex-direction: column; gap: 16px;">
             <button class="navi-option-btn" onclick="openStep('shisatsu_q1')">診察予約</button>
             <button class="navi-option-btn" onclick="location.href='${CLINIC_CONFIG.kenkoUrl}'">健康診断予約</button>
@@ -277,21 +304,19 @@ function initReservationModal() {
         break;
     }
 
-    // 戻るボタンの付加
     if (backStep) {
       html += `
         <div style="margin-top: 36px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e2e8f0; padding-top: 20px;">
-          <button onclick="openStep('${backStep}')" style="background: none; border: none; color: #127a62; font-weight: 700; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">‹ 戻る</button>
+          <button onclick="openStep('${backStep}')" style="background: none; border: none; color: #127a62; font-weight: 700; font-size: 0.95rem; cursor: pointer;">‹ 戻る</button>
           <button onclick="openStep('top')" style="background: none; border: none; color: #718096; font-size: 0.92rem; cursor: pointer;">最初からやり直す</button>
         </div>
       `;
     }
-
     container.innerHTML = html;
   };
 }
 
-// 5. ページ内の動的プレースホルダーを自動置換
+// 5. 動的リンク置換
 function bindDynamicLinks() {
   document.querySelectorAll(".js-tel-link").forEach((el) => {
     el.setAttribute("href", `tel:${CLINIC_CONFIG.telLink}`);
@@ -301,70 +326,40 @@ function bindDynamicLinks() {
   });
 }
 
-// 6. スマホ用ハンバーガーメニュー開閉
-function initHamburgerMenu() {
-  const btn = document.getElementById("js-hamburger");
-  const nav = document.getElementById("js-nav");
-  if (!btn || !nav) return;
-
-  btn.addEventListener("click", () => {
-    btn.classList.toggle("is-active");
-    nav.classList.toggle("is-open");
-  });
-
-  nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      btn.classList.remove("is-active");
-      nav.classList.remove("is-open");
-    });
-  });
-}
-
-// 7. 法定掲示タブの切り替え＆URLパラメータ連動
+// 6. 法定掲示タブ切り替え
 function initLegalTabs() {
   const tabBtns = document.querySelectorAll(".legal-tab-btn");
   const tabPanels = document.querySelectorAll(".legal-tab-panel");
   if (tabBtns.length === 0) return;
 
   const activateTab = (tabId) => {
-    tabBtns.forEach((btn) => {
-      btn.classList.toggle("is-active", btn.dataset.tab === tabId);
-    });
-    tabPanels.forEach((panel) => {
-      panel.classList.toggle("is-active", panel.id === `panel-${tabId}`);
-    });
+    tabBtns.forEach((btn) => { btn.classList.toggle("is-active", btn.dataset.tab === tabId); });
+    tabPanels.forEach((panel) => { panel.classList.toggle("is-active", panel.id === `panel-${tabId}`); });
   };
 
   tabBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      activateTab(btn.dataset.tab);
-    });
+    btn.addEventListener("click", () => { activateTab(btn.dataset.tab); });
   });
 
   const params = new URLSearchParams(window.location.search);
   const targetTab = params.get("tab");
-  if (targetTab) {
-    activateTab(targetTab);
-  }
+  if (targetTab) { activateTab(targetTab); }
 }
 
-/**
- * 8. お知らせ用CSVを読み込んでトップページに自動反映する処理
- */
+// 7. お知らせCSV読み込み
 function initNewsLoader() {
   const container = document.getElementById("news-list-container");
-  if (!container) return; // トップページ以外では実行しない
+  if (!container) return;
 
   fetch("news.csv")
     .then(response => {
-      if (!response.ok) throw new Error("CSVファイルの読み込みに失敗しました。");
+      if (!response.ok) throw new Error("CSV読み込み失敗");
       return response.text();
     })
     .then(csvText => {
       const rows = csvText.split("\n");
       let html = "";
 
-      // 1行目は見出しなのでスキップし、2行目からループ
       for (let i = 1; i < rows.length; i++) {
         const row = rows[i].trim();
         if (!row) continue;
@@ -377,18 +372,12 @@ function initNewsLoader() {
 
         if (!date || !text) continue;
 
-        // カテゴリーが「重要」等の場合にCSSクラスを切り替える判定
         let tagClass = "news-tag";
-        if (category === "重要") {
-          tagClass += " important";
-        }
+        if (category === "重要") { tagClass += " important"; }
 
-        let textHtml = "";
-        if (url && url !== "#" && url !== "") {
-          textHtml = `<a href="${url}" class="news-text" style="color: inherit; text-decoration: underline;">${text}</a>`;
-        } else {
-          textHtml = `<span class="news-text">${text}</span>`;
-        }
+        let textHtml = (url && url !== "#" && url !== "")
+          ? `<a href="${url}" class="news-text" style="color: inherit; text-decoration: underline;">${text}</a>`
+          : `<span class="news-text">${text}</span>`;
 
         html += `
           <li>
@@ -399,11 +388,7 @@ function initNewsLoader() {
         `;
       }
 
-      if (html !== "") {
-        container.innerHTML = html;
-      } else {
-        container.innerHTML = '<li><span class="news-text">現在、お知らせはありません。</span></li>';
-      }
+      container.innerHTML = (html !== "") ? html : '<li><span class="news-text">現在、お知らせはありません。</span></li>';
     })
     .catch(error => {
       console.error(error);
