@@ -676,3 +676,64 @@ img {
     display: none !important;
   }
 }
+
+/* ===================================================
+   PC版ヘッダーのドロップダウンメニュー設定
+=================================================== */
+@media (min-width: 961px) {
+  .site-header .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .site-header .nav-item {
+    position: relative;
+  }
+
+  /* ホバー時にドロップダウンを表示 */
+  .site-header .nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .site-header .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    min-width: 200px;
+    box-shadow: 0 10px 25px rgba(18, 122, 98, 0.1);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.25s ease;
+    z-index: 100;
+  }
+
+  .site-header .dropdown-menu li a {
+    display: block;
+    padding: 10px 18px;
+    font-size: 0.88rem;
+    color: var(--text-main);
+    font-weight: 600;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .site-header .dropdown-menu li a:hover {
+    background-color: var(--primary-light);
+    color: var(--primary);
+  }
+}
+
+/* スマホ版ではドロップダウンのPC用ホバー挙動を無効化 */
+@media (max-width: 960px) {
+  .site-header .dropdown-menu {
+    display: none !important;
+  }
+}

@@ -50,7 +50,7 @@ function getCurrentPage() {
   return page === "" ? "index.html" : page;
 }
 
-// 1. 共通ヘッダーの描画（logo.png画像とテキストを同じ行の左側に配置）
+// 1. 共通ヘッダーの描画（PC版：ドロップダウン付きメニュー / スマホ版：下段クイックナビ）
 function renderHeader() {
   const headerPlaceholder = document.getElementById("common-header");
   if (!headerPlaceholder) return;
@@ -58,7 +58,7 @@ function renderHeader() {
   headerPlaceholder.innerHTML = `
     <header class="site-header">
       <div class="header-inner" style="display: flex; flex-direction: column; align-items: stretch; padding: 8px 16px;">
-        <!-- 上段：ロゴとWEB予約ボタンを同じ行に配置 -->
+        <!-- 上段：ロゴとPC用メニュー、WEB予約ボタン -->
         <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
           
           <!-- 左側：logo.png画像 ＋ クリニック名（横並び） -->
@@ -72,14 +72,34 @@ function renderHeader() {
             </a>
           </div>
 
-          <!-- 右側：WEB予約ボタン -->
+          <!-- 中央〜右側：PC用ナビゲーション（スマホでは非表示） -->
+          <nav class="header-nav" style="display: none;">
+            <ul class="nav-list">
+              <li class="nav-item"><a href="index.html" class="nav-link">🏠 HOME</a></li>
+              <li class="nav-item"><a href="staff.html" class="nav-link">👨‍⚕️ 院長紹介</a></li>
+              <li class="nav-item">
+                <a href="service.html" class="nav-link">🩺 診療内容 ▾</a>
+                <ul class="dropdown-menu">
+                  <li><a href="service.html#fever">🌡️ 発熱外来</a></li>
+                  <li><a href="service.html#lifestyle">🩺 生活習慣病</a></li>
+                  <li><a href="service.html#respiratory">🫁 呼吸器内科</a></li>
+                  <li><a href="service.html#vaccine">💉 予防接種・ワクチン</a></li>
+                  <li><a href="service.html#checkup">📋 健康診断・検査</a></li>
+                </ul>
+              </li>
+              <li class="nav-item"><a href="guide.html" class="nav-link">📋 受診案内</a></li>
+              <li class="nav-item"><a href="access.html" class="nav-link">📍 アクセス</a></li>
+            </ul>
+          </nav>
+
+          <!-- 右側：WEB予約ボタン（PC版のみ表示、スマホではCSSで非表示） -->
           <div class="header-cta" style="flex-shrink: 0;">
             <a href="#" class="btn btn-reserve js-open-reserve-navi" style="padding: 8px 14px; font-size: 0.8rem;">📅 WEB予約</a>
           </div>
 
         </div>
 
-        <!-- 下段：スマホ用クイックアイコンナビ -->
+        <!-- 下段：スマホ用クイックアイコンナビ（PC版では非表示） -->
         <div class="mobile-quick-nav" style="display: flex; gap: 6px; overflow-x: auto; padding-top: 8px; border-top: 1px solid var(--border-color); margin-top: 6px; white-space: nowrap;">
           <a href="staff.html" style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary-dark); padding: 4px 10px; border-radius: 4px; font-weight: 700;">👨‍⚕️ 院長紹介</a>
           <a href="service.html" style="font-size: 0.75rem; background: var(--primary-light); color: var(--primary-dark); padding: 4px 10px; border-radius: 4px; font-weight: 700;">🩺 診療内容</a>
@@ -89,6 +109,23 @@ function renderHeader() {
       </div>
     </header>
   `;
+
+  // 画面幅に応じてPC用ナビとスマホ用クイックナビの表示を切り替える制御
+  const mediaQuery = window.matchMedia("(min-width: 961px)");
+  const navEl = headerPlaceholder.querySelector(".header-nav");
+  const mobileNavEl = headerPlaceholder.querySelector(".mobile-quick-nav");
+
+  function handleScreenChange(e) {
+    if (e.matches) {
+      if (navEl) navEl.style.display = "flex";
+      if (mobileNavEl) mobileNavEl.style.display = "none";
+    } else {
+      if (navEl) navEl.style.display = "none";
+      if (mobileNavEl) mobileNavEl.style.display = "flex";
+    }
+  }
+  mediaQuery.addEventListener("change", handleScreenChange);
+  handleScreenChange(mediaQuery);
 }
 
 // 2. 共通フッターの描画
